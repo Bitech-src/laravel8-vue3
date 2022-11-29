@@ -1,6 +1,6 @@
 # Laravelプロジェクト作成
 docker-compose exec php composer create-project --prefer-dist "laravel/laravel=8.*" ./
-
+docker compose run --rm php php artisan key:generate
 # マイグレーションの実行
 docker-compose exec php php artisan migrate
 

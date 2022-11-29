@@ -43,11 +43,18 @@ services:
       - 3306:3306
 
   phpmyadmin:
-    image: phpmyadmin:5.1.3
+    image: phpmyadmin/phpmyadmin
     environment:
-      - PMA_HOST=db
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql #mysqlサービス名を指定
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    links:
+      - mysql
     ports:
-      - 127.0.0.1:8080:80
+      - 4040:80
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
 
 volumes:
   mysql:
