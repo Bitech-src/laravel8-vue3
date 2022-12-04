@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('ホーム') }}</div>
+                <div class="card-header">{{ __('部品サンプル') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,8 +14,11 @@
                     </div>
                     @endif
 
-                    {{ __('ようこそ') }}
+                    <div class="col-md-4">
+                        <test-vue placeholder="サンプル" name="inputtext" lavel="項目名" type="text"></test-vue>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

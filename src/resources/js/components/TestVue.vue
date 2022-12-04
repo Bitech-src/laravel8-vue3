@@ -1,15 +1,19 @@
 <template>
-  Hello Vue !!
+  <label :for="name" class="form-label">{{ lavel }}</label>
+  <input :type="type" :name="name" :value="value" :placeholder="placeholder" class="form-control" />
 </template>
-<script>
-import { onMounted } from 'vue'
-export default ({
-  setup() {
-    console.log("start vue")
 
-    onMounted(() => {
-      console.log('start mounted !')
-    })
+<script>
+export default {
+  name: "input",
+  props: {
+    value: { type: String, required: true },
+    type: { type: String, required: true },
+    name: { type: String, required: true },
+    lavel: { type: String, required: true },
+    placeholder: { type: String, required: false }
   },
-})
+  methods: {
+  }
+};
 </script>
