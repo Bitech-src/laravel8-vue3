@@ -63,7 +63,9 @@ docker compose exec php php artisan migrate
 ```
 
 ## 4. vue等のinstall
+```
 docker-compose exec node bash -c "npm install & npm run dev"
+```
 
 ※以下は実行しなくてよい
 docker-compose exec node npm install vue@next vue-loader@next @vue/compiler-sfc
@@ -93,7 +95,8 @@ docker compose up -d
 ```
 
 # 備考　（モジュールを修正した際に実行）
-
+モジュールの最新化
+```
 docker-compose exec php bash -c "
 php artisan cache:clear &&
 php artisan config:clear &&
@@ -104,6 +107,9 @@ php artisan clear-compiled &&
 php artisan optimize &&
 composer dump-autoload &&
 rm -f bootstrap/cache/config.php"
+```
 
-
+コンパイル
+```
 docker-compose exec node bash -c "npm install & npm run dev"
+```
