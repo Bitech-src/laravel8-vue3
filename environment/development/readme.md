@@ -4,6 +4,7 @@
 
 - Docker Desktop がインストールされている事が必要です。
 - 作業はコマンドラインから行います。
+
 ```
 cd environment/development
 ```
@@ -39,7 +40,6 @@ DB などの各種イメージのダウンロードが行われ、その後起�
 
 この時点で http://localhost からアクセスする事が可能です。ただし DB の設定をしていないので、システムのログインはできません。
 
-
 ### 確認: データベース
 
 この時点で http://localhost:4040 から phpMyAdmin にアクセスできます。
@@ -47,11 +47,13 @@ DB などの各種イメージのダウンロードが行われ、その後起�
 ## 3. DB の初期化
 
 データベースを登録
+
 ```
 CREATE DATABASE IF NOT EXISTS データベース名
 ```
 
-※ .envファイルを書き換える
+※ .env ファイルを書き換える
+
 ```
 DB_DATABASE=データベース名
 ```
@@ -62,7 +64,8 @@ DB_DATABASE=データベース名
 docker compose exec php php artisan migrate
 ```
 
-## 4. vue等のinstall
+## 4. vue 等の install
+
 ```
 docker-compose exec node bash -c "npm install & npm run dev"
 ```
@@ -95,7 +98,9 @@ docker compose up -d
 ```
 
 # 備考　（モジュールを修正した際に実行）
+
 モジュールの最新化
+
 ```
 docker-compose exec php bash -c "
 php artisan cache:clear &&
@@ -110,6 +115,12 @@ rm -f bootstrap/cache/config.php"
 ```
 
 コンパイル
+
 ```
 docker-compose exec node bash -c "npm install & npm run dev"
 ```
+
+以下エラーの対処法
+"/var/www/storage/logs/laravel.log" could not be opened in append mode: failed to open stream: Permission denied
+
+docker-compose exec php bash -c "chmod -R 777 storage bootstrap/cache"
