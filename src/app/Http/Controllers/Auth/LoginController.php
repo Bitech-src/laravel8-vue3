@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -26,8 +27,14 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    public function redirectPath()
+    {
+        $user = Auth::user();
+        dd($user->id);
+        return '任意のurl';
+        //例）return 'costs/index';
+    }
     /**
      * Create a new controller instance.
      *
