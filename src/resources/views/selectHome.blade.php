@@ -8,14 +8,11 @@
                 <div class="card-header">{{ __('HOME') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    <div class="col-md-4">
-                        <test-vue placeholder="サンプル" name="inputtext" lavel="項目名" type="text"></test-vue>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                    @foreach ( $_utiwake_name as $_name )
+                        <button class="btn btn-primary" type="button">Button</button>
+                        <button class="btn btn-primary" type="button">Button</button>
+                    @endforeach
                     </div>
                 </div>
 

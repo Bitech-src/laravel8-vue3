@@ -34,8 +34,13 @@ class LoginController extends Controller
     {
         $user = Auth::user();
         $login_id = Login::where('user_id',$user->id)->first();
-        $login_roles = LoginRole::where('login_id',$login_id->pid)->get();
-        dd($user->id,$login_id->pid,$login_roles);
+        $login_roles = LoginRole::where('login_id',$login_id->pid)->count();
+        if($login_roles >= 2){
+            // 権限選択画面へ
+            
+        }else{
+            // 対象のHOME画面へ
+        }
         return '任意のurl';
         //例）return 'costs/index';
     }
