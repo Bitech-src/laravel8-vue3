@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLoginTable extends Migration
+class CreateRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateLoginTable extends Migration
      */
     public function up()
     {
-        Schema::create('logins', function (Blueprint $table) {
-            $table->bigIncrements('pid');
-            $table->integer('user_id');
-            $table->integer('people_id');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->integer('pid');
+            $table->bigIncrements('gid');
             $table->string('code',128);
             $table->string('type',24);
             $table->string('kbn',24);
+            $table->string('name',128);
+            $table->string('title',128);
             $table->integer('org_id');
             $table->string('lang',128)->default('jp');
             $table->string('desc',1024);
@@ -42,6 +43,6 @@ class CreateLoginTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logins');
+        Schema::dropIfExists('roles');
     }
 }

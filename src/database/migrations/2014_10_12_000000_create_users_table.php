@@ -20,7 +20,18 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->integer('org_id');
+            $table->string('lang',128)->default('jp');
+            $table->string('desc',1024);
+            $table->string('remark',1024);
+            $table->string('sort',24);
+            $table->integer('lef');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

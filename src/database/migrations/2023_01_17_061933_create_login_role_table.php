@@ -13,7 +13,7 @@ class CreateLoginRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('login_role', function (Blueprint $table) {
+        Schema::create('login_roles', function (Blueprint $table) {
             $table->integer('login_id');
             $table->integer('role_id');
             $table->string('code',128);
@@ -45,6 +45,6 @@ class CreateLoginRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('login_role');
+        Schema::dropIfExists('login_roles');
     }
 }

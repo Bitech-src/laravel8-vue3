@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\Login;
+use App\Models\LoginRole;
 
 class LoginController extends Controller
 {
@@ -31,7 +33,9 @@ class LoginController extends Controller
     public function redirectPath()
     {
         $user = Auth::user();
-        dd($user->id);
+        $login_id = Login::where('user_id',$user->id)->first();
+        $login_roles = LoginRole::where('login_id',$login_id->pid)->get();
+        dd($user->id,$login_id->pid,$login_roles);
         return '任意のurl';
         //例）return 'costs/index';
     }
