@@ -8,10 +8,19 @@
                 <div class="card-header">{{ __('HOME') }}</div>
 
                 <div class="card-body">
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                    @foreach ( $_utiwake_name as $_name )
-                        <button class="btn btn-primary" type="button">Button</button>
-                        <button class="btn btn-primary" type="button">Button</button>
+                    <span>【TODO】 ボタンを押して遷移するようにする</span>
+                    <div class="d-grid gap-2 col-6 mx-auto">    
+                    @php 
+                        // TODO ロールをコントローラ側で取得しViewに渡す
+                        $array = ['admin','user'];
+                    @endphp
+                    @foreach ( $array as $val )
+                        @php 
+                            if($val == 'admin') $name = '管理者';
+                            if($val == 'user') $name = 'ユーザ';
+                            $url = '/' . $val .'/home';
+                        @endphp
+                        <a href="{{ url($url) }}" class="btn btn-primary">{{ $name }}</a>
                     @endforeach
                     </div>
                 </div>
